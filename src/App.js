@@ -8,9 +8,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">DKU Chrome Extension</h1>
         </header>
-        <p className="App-intro">
-          단국대학교 크롬 익스텐션 입니다.
-        </p>
+        <p className="App-intro">단국대학교 크롬 익스텐션 입니다.</p>
       </div>
     );
   }
