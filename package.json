@@ -18,6 +18,7 @@
     "react-dom": "^16.13.1",
     "react-frame-component": "^4.1.2",
     "resolve": "^1.17.0",
+    "styled-components": "^5.2.3",
     "whatwg-fetch": "3.2.0"
   },
   "scripts": {
