@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Frame, { FrameContextConsumer } from 'react-frame-component';
-import App from './App';
+import App from './components/App';
 
 class Main extends React.Component {
   render() {
@@ -28,7 +28,7 @@ class Main extends React.Component {
 }
 
 const app = document.createElement('div');
-app.id = 'my-extension-root';
+app.id = 'root';
 
 document.body.appendChild(app);
 ReactDOM.render(<Main />, app);

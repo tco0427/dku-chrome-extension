@@ -1,19 +1,29 @@
 import React from 'react';
 import { MdAdd } from 'react-icons/md';
-// eslint-disable-next-line no-unused-vars
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+
+const TodoInsert = () => {
+  return (
+    <Insert>
+      <Input placeholder="할 일을 등록하세요." />
+      <InsertButton type="submit">
+        <MdAdd />
+      </InsertButton>
+    </Insert>
+  );
+};
 
 const Insert = styled.form`
   display: flex;
   background: #495057;
 `;
 
-const TodoInput = styled.input`
+const Input = styled.input`
   background: none;
   outline: none;
   border: none;
-  padding: 0.5rem;
-  font-size: 1.125rem;
+  padding: 8px;
+  font-size: 18px;
   line-height: 1.5;
   color: white;
   &::placeholder {
@@ -28,9 +38,9 @@ const InsertButton = styled.button`
   border: none;
   background: #868e96;
   color: white;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 1.5rem;
+  padding-left: 16px;
+  padding-right: 16px;
+  font-size: 25px;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -39,16 +49,5 @@ const InsertButton = styled.button`
     background: #adb5bd;
   }
 `;
-
-const TodoInsert = () => {
-  return (
-    <Insert>
-      <TodoInput placeholder="할 일을 등록하세요." />
-      <InsertButton type="submit">
-        <MdAdd />
-      </InsertButton>
-    </Insert>
-  );
-};
 
 export default TodoInsert;
