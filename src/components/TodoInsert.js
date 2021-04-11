@@ -1,19 +1,19 @@
 import React from 'react';
-import { MdAdd } from 'react-icons/md';
+import { MdAdd as AddButtonIcon } from 'react-icons/md';
 import styled from 'styled-components';
 
-const TodoInsert = () => {
+const TodoForm = () => {
   return (
-    <Insert>
+    <TodoFormWrapper>
       <Input placeholder="할 일을 등록하세요." />
-      <InsertButton type="submit">
-        <MdAdd />
+      <InsertButton>
+        <AddButtonIcon />
       </InsertButton>
-    </Insert>
+    </TodoFormWrapper>
   );
 };
 
-const Insert = styled.form`
+const TodoFormWrapper = styled.form`
   display: flex;
   background: #495057;
 `;
@@ -32,12 +32,8 @@ const Input = styled.input`
   flex: 1;
 `;
 
-const InsertButton = styled.button`
-  background: none;
-  outline: none;
-  border: none;
-  background: #868e96;
-  color: white;
+const InsertButton = styled.div`
+  color: ${({ theme }) => theme.textColor};
   padding-left: 16px;
   padding-right: 16px;
   font-size: 25px;
@@ -45,9 +41,10 @@ const InsertButton = styled.button`
   align-items: center;
   cursor: pointer;
   transition: 0.1s background ease-in;
+  background-color: ${({ theme }) => theme.primaryColor};
   &:hover {
-    background: #adb5bd;
+    background-color: ${({ theme }) => theme.primaryTintColor};
   }
 `;
 
-export default TodoInsert;
+export default TodoForm;
