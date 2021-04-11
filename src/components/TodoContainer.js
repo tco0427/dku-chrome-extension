@@ -14,7 +14,6 @@ const TodoContainer = ({ children }) => {
 const Container = styled.div`
   width: 512px;
   margin: 0 auto;
-  border-radius: 4px;
 `;
 
 const AppTitle = styled.div`
