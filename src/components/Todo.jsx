@@ -5,16 +5,16 @@ import TodoInsert from './TodoInsert';
 
 const Todo = () => {
   return (
-    <App>
+    <TodoApp>
       <TodoContainer>
         <TodoInsert />
       </TodoContainer>
-    </App>
+    </TodoApp>
   );
 };
 
 // 다른 변수명 사용
-const App = styled.div`
+const TodoApp = styled.div`
   background-color: ${props => props.theme.backgroundColor};
   color: ${props => props.theme.textColor};
   margin: 0 auto;

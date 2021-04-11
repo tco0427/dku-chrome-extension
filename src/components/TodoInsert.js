@@ -1,12 +1,31 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { MdAdd as AddButtonIcon } from 'react-icons/md';
 import styled from 'styled-components';
 
 const TodoForm = () => {
+  let todoList = ['오픈소스'];
+  const todoInput = useRef(null);
+  const addTodo = () => {
+    const output = localStorage.getItem('todoList');
+    const localTodoList = JSON.parse(output);
+    if (localTodoList == null) {
+      localStorage.setItem('todoList', JSON.stringify(todoList));
+    } else {
+      todoList = localTodoList;
+    }
+    todoList.push(todoInput.current.value);
+    localStorage.setItem('todoList', JSON.stringify(todoList));
+    todoInput.current.value = '';
+  };
   return (
     <TodoFormWrapper>
-      <Input placeholder="할 일을 등록하세요." />
-      <InsertButton>
+      <Input
+        id="input"
+        type="text"
+        placeholder="할 일을 등록하세요."
+        ref={todoInput}
+      />
+      <InsertButton onClick={addTodo}>
         <AddButtonIcon />
       </InsertButton>
     </TodoFormWrapper>
@@ -15,20 +34,14 @@ const TodoForm = () => {
 
 const TodoFormWrapper = styled.form`
   display: flex;
-  background: #495057;
+  background-color: ${({ theme }) => theme.backgroundColor};
 `;
 
 const Input = styled.input`
-  background: none;
-  outline: none;
-  border: none;
   padding: 8px;
   font-size: 18px;
   line-height: 1.5;
-  color: white;
-  &::placeholder {
-    color: #dee2e6;
-  }
+  color: black; //아래 InsertButton처럼 적용을 했을 때 글씨가 왜인지 white로 보이네요..한 번 check해주시면 감사하겠습니다.
   flex: 1;
 `;
 
