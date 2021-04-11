@@ -1,24 +1,20 @@
 import React from 'react';
-
 import styled from 'styled-components';
 
 const TodoContainer = ({ children }) => {
   return (
-    <Container>
-      <AppTitle>할 일 목록</AppTitle>
-      <Content>{children}</Content>
-    </Container>
+    <TodoWrapper>
+      <TodoTitle>할 일 목록</TodoTitle>
+      <TodoContent>{children}</TodoContent>
+    </TodoWrapper>
   );
 };
 
-const Container = styled.div`
-  width: 512px;
-  margin: 0 auto;
+const TodoWrapper = styled.div`
+  width: 100%;
 `;
 
-const AppTitle = styled.div`
-  background: #22b8cf;
-  color: white;
+const TodoTitle = styled.div`
   height: 60px;
   font-size: 25px;
   display: flex;
@@ -26,8 +22,8 @@ const AppTitle = styled.div`
   justify-content: center;
 `;
 
-const Content = styled.div`
-  background: white;
+const TodoContent = styled.div`
+  background: #fff;
 `;
 
 export default TodoContainer;

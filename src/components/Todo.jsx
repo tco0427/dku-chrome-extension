@@ -13,8 +13,8 @@ const Todo = () => {
   );
 };
 
+// 다른 변수명 사용
 const App = styled.div`
-  width: 512px;
   background-color: ${props => props.theme.backgroundColor};
   color: ${props => props.theme.textColor};
   margin: 0 auto;
