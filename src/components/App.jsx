@@ -8,7 +8,6 @@ const App = () => {
     <ThemeProvider>
       <AppWrapper>
         <Todo />
-        {/* <TodoList /> */}
       </AppWrapper>
     </ThemeProvider>
   );
