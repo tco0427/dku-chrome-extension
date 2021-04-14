@@ -7,5 +7,7 @@ module.exports = {
   extends: ['eslint:recommended', 'airbnb', 'plugin:prettier/recommended'],
   rules: {
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx'] }],
+    'react/prop-types': 0,
+    'linebreak-style': 0, 
   },
 };
