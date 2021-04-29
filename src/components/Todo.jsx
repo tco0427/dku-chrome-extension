@@ -2,12 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import TodoContainer from './TodoContainer';
 import TodoInsert from './TodoInsert';
+import TodoListItems from './TodoListItems';
 
 const Todo = () => {
   return (
     <TodoApp>
       <TodoContainer>
         <TodoInsert />
+        <TodoListItems />
       </TodoContainer>
     </TodoApp>
   );
