@@ -2,36 +2,36 @@
 /* src/content.js */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Frame, { FrameContextConsumer } from 'react-frame-component';
-import App from './App';
+// import Frame, { FrameContextConsumer } from 'react-frame-component';
+import App from './components/App';
 
-class Main extends React.Component {
-  render() {
-    return (
-      <Frame
-        head={[
-          <link
-            type="text/css"
-            rel="stylesheet"
-            href={chrome.runtime.getURL('/static/css/content.css')}
-          />,
-        ]}
-      >
-        <FrameContextConsumer>
-          {({ document, window }) => {
-            return <App document={document} window={window} isExt={true} />;
-          }}
-        </FrameContextConsumer>
-      </Frame>
-    );
-  }
-}
+// class Main extends React.Component {
+//   render() {
+//     return (
+//       <Frame
+//         head={[
+//           <link
+//             type="text/css"
+//             rel="stylesheet"
+//             href={chrome.runtime.getURL('/static/css/content.css')}
+//           />,
+//         ]}
+//       >
+//         <FrameContextConsumer>
+//           {({ document, window }) => {
+//             return <App document={document} window={window} isExt={true} />;
+//           }}
+//         </FrameContextConsumer>
+//       </Frame>
+//     );
+//   }
+// }
 
 const app = document.createElement('div');
-app.id = 'my-extension-root';
+app.id = 'dku_extension';
 
 document.body.appendChild(app);
-ReactDOM.render(<Main />, app);
+ReactDOM.render(<App />, app);
 
 app.style.display = 'none';
 
