@@ -12,6 +12,7 @@ const TodoContainer = ({ children }) => {
 
 const TodoWrapper = styled.div`
   width: 100%;
+  height: 100%;
 `;
 
 const TodoTitle = styled.div`

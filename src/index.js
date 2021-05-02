@@ -7,4 +7,5 @@ ReactDOM.render(
   <App isExt={false} />,
   document.getElementById('dku_extension'),
 );
+
 registerServiceWorker();
