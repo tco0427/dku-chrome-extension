@@ -1,4 +1,6 @@
-import React, { useRef, useState, useEffect } from 'react';
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from 'react';
 import { MdAdd as AddButtonIcon } from 'react-icons/md';
 import styled from 'styled-components';
 import { TODO_LIST_KEY } from '../common/constants/index';
@@ -6,10 +8,7 @@ import TodoList from './TodoList';
 
 const Todo = () => {
   const [todos, setTodos] = useState([]);
-  const todoInputRef = useRef(null);
-
-  const deleteButtonClickHanlder = index =>
-    setTodos(prev => prev.filter((v, i) => i !== index));
+  const [todoInput, setTodoInput] = useState('');
 
   useEffect(() => {
     const todosFromLocalStorageInString = localStorage.getItem(TODO_LIST_KEY);
@@ -20,28 +19,36 @@ const Todo = () => {
     setTodos(todosFromLocalStorageInObj);
   }, []);
 
-  const onClickHandler = () => {
-    const newTodo = todoInputRef.current.value;
-    setTodos(prev => [...prev, newTodo]);
+  const inputTextHandler = e => {
+    console.log(e.target.value);
+    setTodoInput(e.target.value);
+  };
+
+  const onClickHandler = e => {
+    e.preventDefault();
+    const todoId = Date.now();
+    setTodos(prev => [
+      ...prev,
+      { text: todoInput, content: '', completed: false, id: todoId },
+    ]);
+    setTodoInput('');
   };
 
   return (
     <>
       <TodoFormWrapper>
         <Input
+          onChange={inputTextHandler}
+          value={todoInput}
           id="input"
           type="text"
           placeholder="할 일을 등록하세요."
-          ref={todoInputRef}
         />
         <InsertButton onClick={onClickHandler}>
           <AddButtonIcon />
         </InsertButton>
       </TodoFormWrapper>
-      <TodoList
-        todos={todos}
-        deleteButtonClickHanlder={deleteButtonClickHanlder}
-      />
+      <TodoList todos={todos} setTodos={setTodos} />
     </>
   );
 };
