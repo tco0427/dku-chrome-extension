@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         width: 100vw;
         height: 100vh;
+        transition: all 1s linear;
     }
 `;
 
