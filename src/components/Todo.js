@@ -62,15 +62,18 @@ const Input = styled.input`
   padding: 8px;
   font-size: 18px;
   line-height: 1.5;
+  margin 5px;
   color: black;
   flex: 1;
 `;
 
 const InsertButton = styled.div`
   color: ${({ theme }) => theme.textColor};
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 15px;
+  padding-right: 15px;
   font-size: 25px;
+  margin: 5px;
+  height: 55px;
   display: flex;
   align-items: center;
   cursor: pointer;
