@@ -1,57 +1,54 @@
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { MdAdd as AddButtonIcon } from 'react-icons/md';
 import styled from 'styled-components';
+import SubjectForm from './SubjectForm';
 import { TODO_LIST_KEY } from '../common/constants/index';
 import TodoList from './TodoList';
+import Toggler from './Toggler';
 
-const Todo = () => {
+const Todo = ({ toggleTheme }) => {
   const [todos, setTodos] = useState([]);
-  const [todoInput, setTodoInput] = useState('');
 
   useEffect(() => {
-    const todosFromLocalStorageInString = localStorage.getItem(TODO_LIST_KEY);
-    if (todosFromLocalStorageInString === null) return;
-    const todosFromLocalStorageInObj = JSON.parse(
-      todosFromLocalStorageInString,
-    );
-    setTodos(todosFromLocalStorageInObj);
+    const todosInString = localStorage.getItem(TODO_LIST_KEY);
+    if (todosInString === null) return;
+    const todosObj = JSON.parse(todosInString);
+    setTodos(todosObj);
   }, []);
 
-  const inputTextHandler = e => {
-    console.log(e.target.value);
-    setTodoInput(e.target.value);
+  const addSubjectHanlder = ({ subject }) => {
+    if (!subject.title) {
+      window.alert('과목명에 내용을 입력 해주세요 ');
+      return;
+    }
+
+    setTodos(prevTodos => {
+      const newTodos = [...prevTodos, subject];
+      localStorage.setItem(TODO_LIST_KEY, JSON.stringify(newTodos));
+      return newTodos;
+    });
   };
 
-  const onClickHandler = e => {
-    e.preventDefault();
-    const todoId = Date.now();
-    setTodos(prev => [
-      ...prev,
-      { text: todoInput, content: '', completed: false, id: todoId },
-    ]);
-    setTodoInput('');
+  const removeSubjectHandler = ({ subjectId }) => {
+    console.log(subjectId);
   };
 
   return (
-    <>
-      <TodoFormWrapper>
-        <Input
-          onChange={inputTextHandler}
-          value={todoInput}
-          id="input"
-          type="text"
-          placeholder="할 일을 등록하세요."
-        />
-        <InsertButton onClick={onClickHandler}>
-          <AddButtonIcon />
-        </InsertButton>
-      </TodoFormWrapper>
-      <TodoList todos={todos} setTodos={setTodos} />
-    </>
+    <TodoConatiner>
+      <Toggler toggleTheme={toggleTheme} />
+      <SubjectForm addSubjectHanlder={addSubjectHanlder} />
+      <TodoList
+        todos={todos}
+        setTodos={setTodos}
+        removeSubjectHandler={removeSubjectHandler}
+      />
+    </TodoConatiner>
   );
 };
+
+const TodoConatiner = styled.div`
+  width: 100%;
+`;
 
 const TodoFormWrapper = styled.form`
   display: flex;
