@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import TodoContainer from './TodoContainer';
 import TodoInsert from './TodoInsert';
-import TodoList from './TodoList'; 
+import TodoList from './TodoList';
 
 const Todo = () => {
   return (
