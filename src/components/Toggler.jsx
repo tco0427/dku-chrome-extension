@@ -22,7 +22,6 @@ const Title = styled.span`
 `;
 
 const TogglerSwitch = styled(DarkModeToggle)`
-  position: absolute;
   right: 50px;
 `;
 

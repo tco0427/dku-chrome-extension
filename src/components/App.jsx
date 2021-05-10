@@ -42,7 +42,7 @@ const App = () => {
 
 const AppWrapper = styled.div`
   background-color: ${({ theme }) => theme.backgroundColor};
-  transition: all 0.4s linear;
+  transition: all 0.4s line ar;
   font-family: monospace;
   color: ${({ theme }) => theme.textColor};
   z-index: 21474836456;
