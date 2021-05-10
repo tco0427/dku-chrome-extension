@@ -30,7 +30,15 @@ const Todo = ({ toggleTheme }) => {
   };
 
   const removeSubjectHandler = ({ subjectId }) => {
-    console.log(subjectId);
+    const isContinue = window.confirm('정말로 삭제 하시겠어요?');
+
+    if (!isContinue) return;
+
+    setTodos(prev => {
+      const removedTodos = prev.filter(v => v.id !== subjectId);
+      localStorage.setItem(TODO_LIST_KEY, JSON.stringify(removedTodos));
+      return removedTodos;
+    });
   };
 
   return (
