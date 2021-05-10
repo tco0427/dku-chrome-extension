@@ -1,14 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const TodoContainer = ({ children }) => {
-  return (
-    <TodoWrapper>
-      <TodoTitle>할 일 목록</TodoTitle>
-      <TodoContent>{children}</TodoContent>
-    </TodoWrapper>
-  );
-};
+const TodoContainer = ({ children }) => (
+  <TodoWrapper>
+    <TodoTitle>할 일 목록</TodoTitle>
+    <TodoContent>{children}</TodoContent>
+  </TodoWrapper>
+);
 
 const TodoWrapper = styled.div`
   width: 100%;

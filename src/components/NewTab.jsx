@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import ThemeProvider from '../provider/ThemeProvider';
+import ThemeProvider from '../provider/theme';
 
 const NewTab = () => (
   <ThemeProvider>

@@ -50,8 +50,6 @@ const AppWrapper = styled.div`
   top: 0;
   right: 0;
   position: fixed;
-  max-width: 800px;
-  min-width: 500px;
   input:focus,
   select:focus,
   textarea:focus,
