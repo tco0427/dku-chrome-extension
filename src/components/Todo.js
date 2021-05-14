@@ -41,10 +41,15 @@ const Todo = ({ toggleTheme }) => {
     });
   };
 
-  const addDetailHandler = ({ subjectDetail }) => {
-    console.log(subjectDetail);
-    subjectDetail.push('ex');
-    console.log(subjectDetail);
+  const addDetailHandler = ({ todoItem, todoId, subjectDetail }) => {
+    const detail = todoItem.children;
+    detail.push('ex');
+    console.log(detail);
+    setTodos(prev => {
+      const prevTodoList = [...prev];
+      localStorage.setItem(TODO_LIST_KEY, JSON.stringify(prevTodoList));
+      return prevTodoList;
+    });
   };
 
   return (

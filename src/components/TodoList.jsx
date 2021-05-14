@@ -13,7 +13,13 @@ const TodoList = ({ todos, removeSubjectHandler, addDetailHandler }) => (
           {todo.title}
         </TodoTitle>
         <DetailsButton
-          onClick={() => addDetailHandler({ subjectDetail: todo.children })}
+          onClick={() =>
+            addDetailHandler({
+              todoItem: todo,
+              todoId: todo.id,
+              subjectDetail: todo.children,
+            })
+          }
         >
           <IoIosAddCircle size="24" />
         </DetailsButton>
