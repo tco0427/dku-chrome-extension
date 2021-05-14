@@ -84,4 +84,4 @@
     ├── package.json
     └── README.md
 
-## 리뷰 방법
+## 기여 방법

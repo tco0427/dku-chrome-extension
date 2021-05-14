@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { IoIosAddCircle } from 'react-icons/io';
 
 const ICON = ['📓', '📕', '📒', '📙', '📘', '📗'];
 
-const TodoList = ({ todos, removeSubjectHandler }) => (
+const TodoList = ({ todos, removeSubjectHandler, addDetailHandler }) => (
   <div>
     {todos.map(todo => (
       <Todo key={todo.id}>
@@ -11,7 +12,11 @@ const TodoList = ({ todos, removeSubjectHandler }) => (
           <TodoIcon>{ICON[todo.id % 6]}</TodoIcon>
           {todo.title}
         </TodoTitle>
-
+        <DetailsButton
+          onClick={() => addDetailHandler({ subjectDetail: todo.children })}
+        >
+          <IoIosAddCircle size="24" />
+        </DetailsButton>
         <DeleteButton
           onClick={() => removeSubjectHandler({ subjectId: todo.id })}
         >
@@ -21,7 +26,9 @@ const TodoList = ({ todos, removeSubjectHandler }) => (
     ))}
   </div>
 );
-
+const DetailsButton = styled.div`
+  color: green;
+`;
 const TodoIcon = styled.div`
   margin-right: 10px;
 `;

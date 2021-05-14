@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Children } from 'react';
 import { MdAdd as AddButtonIcon } from 'react-icons/md';
 import styled from 'styled-components';
 import SubjectForm from './SubjectForm';
@@ -41,6 +41,12 @@ const Todo = ({ toggleTheme }) => {
     });
   };
 
+  const addDetailHandler = ({ subjectDetail }) => {
+    console.log(subjectDetail);
+    subjectDetail.push('ex');
+    console.log(subjectDetail);
+  };
+
   return (
     <TodoConatiner>
       <Toggler toggleTheme={toggleTheme} />
@@ -49,6 +55,7 @@ const Todo = ({ toggleTheme }) => {
         todos={todos}
         setTodos={setTodos}
         removeSubjectHandler={removeSubjectHandler}
+        addDetailHandler={addDetailHandler}
       />
     </TodoConatiner>
   );
