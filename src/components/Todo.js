@@ -29,6 +29,17 @@ const Todo = ({ toggleTheme }) => {
     });
   };
 
+  const checkSubjectHandler = ({ subjectId }) => {
+    setTodos(
+      todos.map(item => {
+        if (item.id === subjectId) {
+          return { ...item, completed: true };
+        }
+        return item;
+      }),
+    );
+  };
+
   const removeSubjectHandler = ({ subjectId }) => {
     const isContinue = window.confirm('정말로 삭제 하시겠어요?');
 
@@ -41,6 +52,17 @@ const Todo = ({ toggleTheme }) => {
     });
   };
 
+  const editSpaceIsVisibleHandler = ({ subjectId }) => {
+    setTodos(
+      todos.map(item => {
+        if (item.id === subjectId) {
+          return { ...item, editSpace: true };
+        }
+        return item;
+      }),
+    );
+  };
+
   return (
     <TodoConatiner>
       <Toggler toggleTheme={toggleTheme} />
@@ -48,7 +70,10 @@ const Todo = ({ toggleTheme }) => {
       <TodoList
         todos={todos}
         setTodos={setTodos}
+        editSpaceIsVisibleHandler={editSpaceIsVisibleHandler}
+        addSubjectHanlder={addSubjectHanlder}
         removeSubjectHandler={removeSubjectHandler}
+        checkSubjectHandler={checkSubjectHandler}
       />
     </TodoConatiner>
   );
