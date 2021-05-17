@@ -65,9 +65,8 @@ const Todo = ({ toggleTheme }) => {
   const addDetailHandler = ({ todoItem }) => {
     const detail = todoItem.children;
     detail.push('ex');
-    console.log(detail);
     setTodos(prev => {
-      const prevTodoList = [...prev, detail];
+      const prevTodoList = [...prev];
       localStorage.setItem(TODO_LIST_KEY, JSON.stringify(prevTodoList));
       return prevTodoList;
     });
