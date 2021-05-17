@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { IoIosAddCircle } from 'react-icons/io';
 import EditForm from './EditForm';
 
 const ICON = ['📓', '📕', '📒', '📙', '📘', '📗'];
@@ -11,6 +12,7 @@ const TodoList = ({
   editSpaceIsVisibleHandler,
   removeSubjectHandler,
   checkSubjectHandler,
+  addDetailHandler,
 }) => (
   <div>
     {todos.map(todo => (
@@ -39,6 +41,17 @@ const TodoList = ({
         >
           Check
         </CompleteButton>
+        <DetailButton
+          onClick={() =>
+            addDetailHandler({
+              todoItem: todo,
+              todoId: todo.id,
+              subjectDetail: todo.children,
+            })
+          }
+        >
+          <IoIosAddCircle size="24" />
+        </DetailButton>
         <DeleteButton
           onClick={() => removeSubjectHandler({ subjectId: todo.id })}
         >
@@ -49,6 +62,9 @@ const TodoList = ({
   </div>
 );
 
+const DetailButton = styled.div`
+  color: green;
+`;
 const TodoIcon = styled.div`
   margin-right: 10px;
 `;

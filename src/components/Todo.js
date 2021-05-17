@@ -62,6 +62,15 @@ const Todo = ({ toggleTheme }) => {
       }),
     );
   };
+  const addDetailHandler = ({ todoItem }) => {
+    const detail = todoItem.children;
+    detail.push('ex');
+    setTodos(prev => {
+      const prevTodoList = [...prev];
+      localStorage.setItem(TODO_LIST_KEY, JSON.stringify(prevTodoList));
+      return prevTodoList;
+    });
+  };
 
   return (
     <TodoConatiner>
@@ -74,6 +83,7 @@ const Todo = ({ toggleTheme }) => {
         addSubjectHanlder={addSubjectHanlder}
         removeSubjectHandler={removeSubjectHandler}
         checkSubjectHandler={checkSubjectHandler}
+        addDetailHandler={addDetailHandler}
       />
     </TodoConatiner>
   );
