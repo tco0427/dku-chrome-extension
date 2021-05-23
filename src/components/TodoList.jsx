@@ -31,17 +31,13 @@ const TodoList = ({
             todo.title
           )}
         </TodoTitle>
-        <EditButton
-          onClick={() => editSpaceIsVisibleHandler({ subjectId: todo.id })}
-        >
-          Edit Toggle
-        </EditButton>
-        <CompleteButton
+
+        {/* <CompleteButton
           onClick={() => checkSubjectHandler({ subjectId: todo.id })}
         >
           Check
-        </CompleteButton>
-        <DetailButton
+        </CompleteButton> */}
+        {/* <DetailButton
           onClick={() =>
             addDetailHandler({
               todoItem: todo,
@@ -51,12 +47,19 @@ const TodoList = ({
           }
         >
           <IoIosAddCircle size="24" />
-        </DetailButton>
-        <DeleteButton
-          onClick={() => removeSubjectHandler({ subjectId: todo.id })}
-        >
-          ❌
-        </DeleteButton>
+        </DetailButton> */}
+        <ActionButtonContainer>
+          <EditButton
+            onClick={() => editSpaceIsVisibleHandler({ subjectId: todo.id })}
+          >
+            수정
+          </EditButton>
+          <DeleteButton
+            onClick={() => removeSubjectHandler({ subjectId: todo.id })}
+          >
+            삭제
+          </DeleteButton>
+        </ActionButtonContainer>
       </Todo>
     ))}
   </div>
@@ -65,6 +68,7 @@ const TodoList = ({
 const DetailButton = styled.div`
   color: green;
 `;
+
 const TodoIcon = styled.div`
   margin-right: 10px;
 `;
@@ -78,12 +82,22 @@ const Todo = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
-  min-height: 60px;
+  height: 60px;
   padding: 16px;
 `;
 
 const DeleteButton = styled.div`
+  cursor: pointer;
   color: red;
+`;
+
+const ActionButtonContainer = styled.div`
+  position: absolute;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  right: 16px;
 `;
 
 const CompleteButton = styled.div`
@@ -94,7 +108,8 @@ const CompleteButton = styled.div`
 `;
 
 const EditButton = styled.div`
-  color: oragne;
+  cursor: pointer;
+  color: pink;
 `;
 
 export default TodoList;

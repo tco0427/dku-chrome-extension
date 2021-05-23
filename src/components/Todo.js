@@ -62,15 +62,15 @@ const Todo = ({ toggleTheme }) => {
       }),
     );
   };
-  const addDetailHandler = ({ todoItem }) => {
-    const detail = todoItem.children;
-    detail.push('ex');
-    setTodos(prev => {
-      const prevTodoList = [...prev];
-      localStorage.setItem(TODO_LIST_KEY, JSON.stringify(prevTodoList));
-      return prevTodoList;
-    });
-  };
+  // const addDetailHandler = ({ todoItem }) => {
+  //   const detail = todoItem.children;
+  //   detail.push('ex');
+  //   setTodos(prev => {
+  //     const prevTodoList = [...prev];
+  //     localStorage.setItem(TODO_LIST_KEY, JSON.stringify(prevTodoList));
+  //     return prevTodoList;
+  //   });
+  // };
 
   return (
     <TodoConatiner>
@@ -83,7 +83,6 @@ const Todo = ({ toggleTheme }) => {
         addSubjectHanlder={addSubjectHanlder}
         removeSubjectHandler={removeSubjectHandler}
         checkSubjectHandler={checkSubjectHandler}
-        addDetailHandler={addDetailHandler}
       />
     </TodoConatiner>
   );
@@ -96,15 +95,6 @@ const TodoConatiner = styled.div`
 const TodoFormWrapper = styled.form`
   display: flex;
   background-color: ${({ theme }) => theme.backgroundColor};
-`;
-
-const Input = styled.input`
-  padding: 8px;
-  font-size: 18px;
-  line-height: 1.5;
-  margin 5px;
-  color: black;
-  flex: 1;
 `;
 
 const InsertButton = styled.div`
