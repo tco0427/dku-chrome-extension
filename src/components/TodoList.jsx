@@ -16,57 +16,78 @@ const TodoList = ({
 }) => (
   <div>
     {todos.map(todo => (
-      <Todo key={todo.id}>
-        <TodoTitle>
-          <TodoIcon>{ICON[todo.id % 6]}</TodoIcon>
-          {todo.editSpace ? (
-            <EditForm
-              todos={todos}
-              setTodos={setTodos}
-              todoId={todo.id}
-              todoEditSpace={todo.editSpace}
-              addSubjectHandler={addSubjectHandler}
-            />
-          ) : (
-            todo.title
-          )}
-        </TodoTitle>
-
-        {/* <CompleteButton
-          onClick={() => checkSubjectHandler({ subjectId: todo.id })}
-        >
-          Check
-        </CompleteButton> */}
-        {/* <DetailButton
-          onClick={() =>
-            addDetailHandler({
-              todoItem: todo,
-              todoId: todo.id,
-              subjectDetail: todo.children,
-            })
-          }
-        >
-          <IoIosAddCircle size="24" />
-        </DetailButton> */}
-        <ActionButtonContainer>
-          <EditButton
-            onClick={() => editSpaceIsVisibleHandler({ subjectId: todo.id })}
+      <>
+        <Todo key={todo.id}>
+          <TodoTitle>
+            <TodoIcon>{ICON[todo.id % 6]}</TodoIcon>
+            {todo.editSpace ? (
+              <EditForm
+                todos={todos}
+                setTodos={setTodos}
+                todoId={todo.id}
+                todoEditSpace={todo.editSpace}
+                addSubjectHandler={addSubjectHandler}
+              />
+            ) : (
+              todo.title
+            )}
+            <DoneButton>{todo.completed ? '✅' : ''}</DoneButton>
+          </TodoTitle>
+          <AddButton
+            onClick={() =>
+              addDetailHandler({
+                todoItem: todo,
+              })
+            }
           >
-            수정
-          </EditButton>
-          <DeleteButton
-            onClick={() => removeSubjectHandler({ subjectId: todo.id })}
-          >
-            삭제
-          </DeleteButton>
-        </ActionButtonContainer>
-      </Todo>
+            메모 작성
+          </AddButton>
+          <ActionButtonContainer>
+            {todo.completed ? null : (
+              <CompleteButton
+                onClick={() => checkSubjectHandler({ subjectId: todo.id })}
+              >
+                완료
+              </CompleteButton>
+            )}
+            <EditButton
+              onClick={() => editSpaceIsVisibleHandler({ subjectId: todo.id })}
+            >
+              수정
+            </EditButton>
+            <DeleteButton
+              onClick={() => removeSubjectHandler({ subjectId: todo.id })}
+            >
+              삭제
+            </DeleteButton>
+          </ActionButtonContainer>
+        </Todo>
+        {todo.children.map(val => (
+          <Child>👉{val}</Child>
+        ))}
+      </>
     ))}
   </div>
 );
 
-const DetailButton = styled.div`
-  color: green;
+const AddButton = styled.div`
+  cursor: pointer;
+  color: blue;
+  height: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 6px;
+`;
+
+const Child = styled.p`
+  color: ${({ theme }) => theme.textColor};
+  font-size: 15px;
+  font-weight: bold;
+  padding: 0 16px;
+`;
+
+const DoneButton = styled.div`
+  margin-left: 6px;
 `;
 
 const TodoIcon = styled.div`
@@ -76,24 +97,28 @@ const TodoIcon = styled.div`
 const TodoTitle = styled.div`
   font-size: 24px;
   display: flex;
+  flex-direction: row;
+  algin-items: center;
 `;
 
 const Todo = styled.div`
-  display: flex;
   width: 100%;
-  justify-content: space-between;
-  height: 60px;
-  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 120px;
+  padding: 8px;
 `;
 
 const DeleteButton = styled.div`
+  padding: 8px;
   cursor: pointer;
   color: red;
 `;
 
 const ActionButtonContainer = styled.div`
   position: absolute;
-  height: 60px;
+  margin-top: 16px;
+  height: 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -102,14 +127,13 @@ const ActionButtonContainer = styled.div`
 
 const CompleteButton = styled.div`
   color: green;
-  padding-left: 40px;
-  margin-left: 300px;
-  align-items: center;
+  padding: 8px;
 `;
 
 const EditButton = styled.div`
   cursor: pointer;
   color: pink;
+  padding: 8px;
 `;
 
 export default TodoList;

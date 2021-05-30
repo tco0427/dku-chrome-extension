@@ -26,21 +26,13 @@ const EditForm = ({
       return;
     }
 
-    const newTodos = todos.map(item => {
-      if (item.id === todoId) {
-        return {
-          ...item,
-          id: todoId,
-          title: editInput,
-          editSpace: false,
-          completed: todoCompleted,
-          children: todoChildren,
-        };
-      }
-      return item;
+    setTodos(prev => {
+      const newTodos = prev.map(v =>
+        v.id === todoId ? { ...v, title: editInput, editSpace: false } : prev,
+      );
+      localStorage.setItem(TODO_LIST_KEY, JSON.stringify(newTodos));
+      return newTodos;
     });
-    localStorage.setItem(TODO_LIST_KEY, JSON.stringify(newTodos));
-    setTodos(newTodos);
   };
 
   return (
@@ -69,7 +61,7 @@ const Input = styled.input`
   border-bottom: 1px solid #eee;
 `;
 
-const EditButton = styled.button`
+const EditButton = styled.div`
   font-size: 18px;
   cursor: pointer;
   color: purple;
