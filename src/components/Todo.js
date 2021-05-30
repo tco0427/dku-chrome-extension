@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { MdAdd as AddButtonIcon } from 'react-icons/md';
 import styled from 'styled-components';
 import SubjectForm from './SubjectForm';
 import { TODO_LIST_KEY } from '../common/constants/index';
@@ -19,6 +18,10 @@ const Todo = ({ toggleTheme }) => {
   const addSubjectHanlder = ({ subject }) => {
     if (!subject.title) {
       window.alert('과목명에 내용을 입력 해주세요 ');
+      return;
+    }
+    if (!subject.end_at) {
+      window.alert('마감일을 선택 해주세요 ');
       return;
     }
 
@@ -72,6 +75,10 @@ const Todo = ({ toggleTheme }) => {
 
   const addDetailHandler = ({ todoItem }) => {
     const val = window.prompt('메모를 작성 해주세요');
+    if (!val) {
+      alert('내용을 입력 해주세요');
+      return;
+    }
     setTodos(prev => {
       const newTodo = prev.map(item =>
         item.id === todoItem.id
@@ -82,7 +89,6 @@ const Todo = ({ toggleTheme }) => {
       return newTodo;
     });
   };
-  console.log(todos);
 
   return (
     <TodoConatiner>
@@ -103,28 +109,6 @@ const Todo = ({ toggleTheme }) => {
 
 const TodoConatiner = styled.div`
   width: 100%;
-`;
-
-const TodoFormWrapper = styled.form`
-  display: flex;
-  background-color: ${({ theme }) => theme.backgroundColor};
-`;
-
-const InsertButton = styled.div`
-  color: ${({ theme }) => theme.textColor};
-  padding-left: 15px;
-  padding-right: 15px;
-  font-size: 25px;
-  margin: 5px;
-  height: 55px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  transition: 0.1s background ease-in;
-  background-color: ${({ theme }) => theme.primaryColor};
-  &:hover {
-    background - color: ${({ theme }) => theme.primaryTintColor};
-  }
 `;
 
 export default Todo;
