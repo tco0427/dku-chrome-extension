@@ -3,7 +3,7 @@ const lightTheme = {
   primaryColor: '#02529c',
   primaryTintColor: '#02427d',
   primaryShadeColor: '#0266c3',
-  backgroundColor: '#ffffff',
+  backgroundColor: '#fefefe',
   inputBgColor: '#eeeeee',
   textColor: '#000000',
 };

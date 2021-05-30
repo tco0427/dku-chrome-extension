@@ -30,14 +30,21 @@ const Todo = ({ toggleTheme }) => {
   };
 
   const checkSubjectHandler = ({ subjectId }) => {
-    setTodos(
-      todos.map(item => {
+    const isContinue = window.confirm('완료로 변경 하시겠어요?');
+
+    if (!isContinue) return;
+
+    setTodos(prev => {
+      const newTodos = prev.map(item => {
         if (item.id === subjectId) {
           return { ...item, completed: true };
         }
         return item;
-      }),
-    );
+      });
+
+      localStorage.setItem(TODO_LIST_KEY, JSON.stringify(newTodos));
+      return newTodos;
+    });
   };
 
   const removeSubjectHandler = ({ subjectId }) => {
@@ -62,15 +69,20 @@ const Todo = ({ toggleTheme }) => {
       }),
     );
   };
+
   const addDetailHandler = ({ todoItem }) => {
-    const detail = todoItem.children;
-    detail.push('ex');
+    const val = window.prompt('메모를 작성 해주세요');
     setTodos(prev => {
-      const prevTodoList = [...prev];
-      localStorage.setItem(TODO_LIST_KEY, JSON.stringify(prevTodoList));
-      return prevTodoList;
+      const newTodo = prev.map(item =>
+        item.id === todoItem.id
+          ? { ...item, children: [...item.children, val] }
+          : item,
+      );
+      localStorage.setItem(TODO_LIST_KEY, JSON.stringify(newTodo));
+      return newTodo;
     });
   };
+  console.log(todos);
 
   return (
     <TodoConatiner>
@@ -82,8 +94,8 @@ const Todo = ({ toggleTheme }) => {
         editSpaceIsVisibleHandler={editSpaceIsVisibleHandler}
         addSubjectHanlder={addSubjectHanlder}
         removeSubjectHandler={removeSubjectHandler}
-        checkSubjectHandler={checkSubjectHandler}
         addDetailHandler={addDetailHandler}
+        checkSubjectHandler={checkSubjectHandler}
       />
     </TodoConatiner>
   );
@@ -96,15 +108,6 @@ const TodoConatiner = styled.div`
 const TodoFormWrapper = styled.form`
   display: flex;
   background-color: ${({ theme }) => theme.backgroundColor};
-`;
-
-const Input = styled.input`
-  padding: 8px;
-  font-size: 18px;
-  line-height: 1.5;
-  margin 5px;
-  color: black;
-  flex: 1;
 `;
 
 const InsertButton = styled.div`
