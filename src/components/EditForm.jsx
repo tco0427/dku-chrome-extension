@@ -28,7 +28,9 @@ const EditForm = ({
 
     setTodos(prev => {
       const newTodos = prev.map(v =>
-        v.id === todoId ? { ...v, title: editInput, editSpace: false } : prev,
+        v.id === todoId
+          ? { ...v, children: v.children, title: editInput, editSpace: false }
+          : v,
       );
       localStorage.setItem(TODO_LIST_KEY, JSON.stringify(newTodos));
       return newTodos;
@@ -47,12 +49,12 @@ const EditForm = ({
 };
 
 const Form = styled.form`
-  width: 400px;
+  width: 100%;
+  display: flex;
 `;
 
 const Input = styled.input`
   padding: 4px;
-  width: 400px;
   font-size: 14px;
   color: black;
   height: 24p
@@ -62,9 +64,16 @@ const Input = styled.input`
 `;
 
 const EditButton = styled.div`
-  font-size: 18px;
   cursor: pointer;
-  color: purple;
+  width: 50px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  background-color: ${({ theme }) => theme.buttonColor};
+  border-radius: 8px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 `;
 
 export default EditForm;
