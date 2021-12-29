@@ -2,6 +2,7 @@
   "name": "dku-chrome-extension",
   "version": "1.0.0",
   "dependencies": {
+    "@alexfrankcodes/random-emoji": "^1.0.1",
     "@babel/runtime": "^7.10.4",
     "autoprefixer": "^9.8.5",
     "case-sensitive-paths-webpack-plugin": "^2.3.0",
@@ -20,6 +21,7 @@
     "react": "^16.13.1",
     "react-dark-mode-toggle": "^0.2.0",
     "react-date-picker": "^8.1.1",
+    "react-datepicker": "^4.0.0",
     "react-dom": "^16.13.1",
     "react-frame-component": "^4.1.2",
     "react-icons": "^4.2.0",
@@ -29,7 +31,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "node scripts/build.js --trace-deprecation",
     "test": "node scripts/test.js --env=jsdom",
     "watch": "npm-watch"
   },

@@ -42,17 +42,16 @@ const App = () => {
 
 const AppWrapper = styled.div`
   background-color: ${({ theme }) => theme.backgroundColor};
-  transition: all 0.4s linear;
-  font-family: monospace;
+  transition: all 0.4s line ar;
+  font-family: “Helvetica Neue”, Helvetica, Arial, sans-serif;
   color: ${({ theme }) => theme.textColor};
   z-index: 21474836456;
+  border-radius: 16px;
   margin: 0;
   padding-right: 40px;
   top: 0;
   right: 0;
   position: fixed;
-  max-width: 800px;
-  min-width: 500px;
   input:focus,
   select:focus,
   textarea:focus,

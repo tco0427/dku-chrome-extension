@@ -7,11 +7,11 @@ const Toggler = ({ toggleTheme }) => {
   const { mode } = React.useContext(ThemeContext);
   return (
     <TogglerContainer>
-      <Title>단국대학교 학생을 위한 Todo List ✏️</Title>
+      <Title>단국대학교 학생을 위한 Todo List</Title>
       <TogglerSwitch
         onChange={toggleTheme}
         checked={mode === COLOR.DARK_MODE}
-        size={60}
+        size={40}
       />
     </TogglerContainer>
   );
@@ -19,11 +19,13 @@ const Toggler = ({ toggleTheme }) => {
 
 const Title = styled.span`
   font-size: 22px;
+  word-break: keep-all;
 `;
 
 const TogglerSwitch = styled(DarkModeToggle)`
-  position: absolute;
-  right: 50px;
+  position: fixed;
+  right: 10px;
+  z-index: 99999;
 `;
 
 const TogglerContainer = styled.div`
