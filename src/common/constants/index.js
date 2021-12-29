@@ -5,4 +5,6 @@ const COLOR = {
   LIGHT_MODE: 'light',
 };
 
+export const TODO_LIST_KEY = 'DKU_EXTENSION_KEY';
+
 export default COLOR;
